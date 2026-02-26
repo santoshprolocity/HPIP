@@ -1,160 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Human Potential Intelligence Platform</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Human Potential Intelligence Platform</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-  </style>
+<style>
+body { font-family: 'Inter', sans-serif; background:#0a0a0a; }
+.gradient-text {
+  background: linear-gradient(90deg,#ffffff,#9ca3af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+</style>
 </head>
 
-<body class="bg-black text-white">
+<body class="text-white">
 
 <!-- NAV -->
-<nav class="w-full bg-black border-b border-gray-800 p-4 flex justify-between">
-  <div class="font-bold">Human Potential AI</div>
-  <button onclick="toggleInvestorMode()" class="border px-4 py-1 rounded-lg text-sm">Investor Mode</button>
+<nav class="fixed w-full bg-black/60 backdrop-blur border-b border-gray-800 z-50">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<div class="font-bold text-lg">Human Potential AI</div>
+<button onclick="toggleInvestorMode()" class="px-4 py-2 rounded-lg border border-gray-600 hover:border-white transition">Investor Mode</button>
+</div>
 </nav>
 
+<div class="h-20"></div>
+
 <!-- HERO -->
-<section class="py-20 text-center px-6">
-  <h1 class="text-4xl md:text-6xl font-extrabold mb-6">Human Potential Intelligence Platform</h1>
-  <p class="text-gray-400 max-w-3xl mx-auto">
-    Modeling, predicting, and optimizing human capacity across physiology, cognition, and recovery.
-  </p>
+<section class="text-center py-28 px-6">
+<h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 gradient-text">
+Engineering Human Potential
+</h1>
+<p class="text-xl text-gray-400 max-w-3xl mx-auto mb-10">
+A full‑stack intelligence platform modeling physiology, cognition, recovery, and long‑term adaptation — built for elite programs and global scale.
+</p>
+<div class="flex justify-center gap-6">
+<button class="bg-white text-black px-8 py-4 rounded-xl font-semibold">Request Enterprise Demo</button>
+<button class="border border-gray-500 px-8 py-4 rounded-xl">View Research</button>
+</div>
 </section>
 
-<!-- INVESTOR METRICS -->
-<section class="py-20 px-6 bg-gray-950">
-  <h2 class="text-3xl font-bold text-center mb-12">Market Opportunity</h2>
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
-    <div class="bg-gray-900 p-6 rounded-2xl shadow-lg">
-      <canvas id="tamChart"></canvas>
-    </div>
-    <div class="bg-gray-900 p-6 rounded-2xl shadow-lg">
-      <canvas id="revenueChart"></canvas>
-    </div>
-  </div>
-  <div class="text-center mt-10">
-    <button onclick="downloadInvestorDeck()" class="bg-white text-black px-6 py-3 rounded-xl font-semibold">Download Investor Deck (PDF)</button>
-  </div>
+<!-- VALUE GRID -->
+<section class="py-24 px-6 bg-black">
+<div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
+<div class="glass p-8 rounded-2xl">
+<h3 class="text-2xl font-bold mb-4">Adaptive AI Engine</h3>
+<p class="text-gray-400">Multi-task transformers modeling fatigue, load, injury probability, and readiness trajectories.</p>
+</div>
+<div class="glass p-8 rounded-2xl">
+<h3 class="text-2xl font-bold mb-4">Digital Twin Simulation</h3>
+<p class="text-gray-400">Dynamic physiological embeddings updated daily to simulate performance outcomes weeks ahead.</p>
+</div>
+<div class="glass p-8 rounded-2xl">
+<h3 class="text-2xl font-bold mb-4">Enterprise Infrastructure</h3>
+<p class="text-gray-400">Timescale hypertables, Kafka streaming, RLS security, and GPU model training clusters.</p>
+</div>
+</div>
 </section>
 
-<!-- LIVE AI DEMO -->
-<section class="py-20 px-6 text-center">
-  <h2 class="text-3xl font-bold mb-10">Live AI Inference Demo</h2>
-  <div class="max-w-xl mx-auto bg-gray-900 p-6 rounded-2xl shadow-lg">
-    <input id="inferenceInput" type="number" placeholder="Enter Fatigue Index (1-100)" 
-      class="w-full p-3 mb-4 rounded bg-black border border-gray-700 text-white">
-    <button onclick="runInference()" 
-      class="bg-white text-black px-6 py-3 rounded-xl w-full font-semibold">Run AI Prediction</button>
-    <div class="mt-6 text-xl">
-      Predicted Injury Risk: <span id="inferenceOutput">--</span>%
-    </div>
-  </div>
+<!-- MARKET SECTION -->
+<section class="py-24 px-6 bg-gray-950">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl font-bold text-center mb-16">Market Opportunity</h2>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="glass p-8 rounded-2xl">
+<h3 class="text-xl font-semibold mb-6">Total Addressable Market</h3>
+<canvas id="tamChart"></canvas>
+</div>
+<div class="glass p-8 rounded-2xl">
+<h3 class="text-xl font-semibold mb-6">Projected ARR Growth</h3>
+<canvas id="revenueChart"></canvas>
+</div>
+</div>
+<div class="text-center mt-12">
+<button onclick="downloadInvestorDeck()" class="bg-white text-black px-8 py-4 rounded-xl font-semibold">Download Investor Deck</button>
+</div>
+</div>
 </section>
 
-<!-- WHITEPAPER -->
-<section class="py-20 px-6 bg-gray-950 text-center">
-  <h2 class="text-3xl font-bold mb-8">Download Research Whitepaper</h2>
-  <div class="max-w-md mx-auto bg-gray-900 p-6 rounded-2xl shadow-lg">
-    <input id="whitepaperEmail" type="email" placeholder="Enter email to unlock" 
-      class="w-full p-3 mb-4 rounded bg-black border border-gray-700 text-white">
-    <button onclick="unlockWhitepaper()" 
-      class="bg-white text-black px-6 py-3 rounded-xl w-full font-semibold">Unlock PDF</button>
-    <div id="whitepaperLink" class="mt-6 hidden">
-      <a href="#" class="underline text-white">Download Whitepaper.pdf</a>
-    </div>
-  </div>
+<!-- AI DEMO -->
+<section class="py-24 px-6 bg-black">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-4xl font-bold mb-12">Live AI Inference</h2>
+<div class="glass p-10 rounded-2xl">
+<p class="text-gray-400 mb-6">Simulate fatigue input and observe predicted injury probability.</p>
+<input id="inferenceInput" type="range" min="1" max="100" value="40" class="w-full mb-6">
+<div class="text-3xl font-bold mb-4">Fatigue Index: <span id="fatigueValue">40</span></div>
+<div class="text-xl text-gray-300">Predicted Injury Risk</div>
+<div id="inferenceOutput" class="text-5xl font-black mt-4">--%</div>
+</div>
+</div>
 </section>
 
-<footer class="py-10 text-center text-gray-500 text-sm border-t border-gray-800">
-  © 2026 Human Potential Intelligence Platform
+<!-- CASE STUDY -->
+<section class="py-24 px-6 bg-gray-950">
+<div class="max-w-5xl mx-auto text-center">
+<h2 class="text-4xl font-bold mb-12">Enterprise Impact</h2>
+<div class="glass p-10 rounded-2xl">
+<p class="text-gray-300 text-lg mb-4">32% reduction in soft‑tissue injury incidence across 18 months.</p>
+<p class="text-gray-400">11% performance output increase while lowering chronic fatigue markers.</p>
+</div>
+</div>
+</section>
+
+<!-- RESEARCH -->
+<section class="py-24 px-6 bg-black">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl font-bold text-center mb-16">Research & Publications</h2>
+<div class="grid md:grid-cols-3 gap-10">
+<div class="glass p-8 rounded-2xl">
+<h3 class="font-bold text-xl mb-4">Fatigue Modeling with Transformers</h3>
+<p class="text-gray-400">Longitudinal sequence learning for adaptation forecasting.</p>
+</div>
+<div class="glass p-8 rounded-2xl">
+<h3 class="font-bold text-xl mb-4">Federated Learning in Elite Sports</h3>
+<p class="text-gray-400">Privacy-preserving global model aggregation.</p>
+</div>
+<div class="glass p-8 rounded-2xl">
+<h3 class="font-bold text-xl mb-4">Digital Twin Performance Simulation</h3>
+<p class="text-gray-400">Modeling latent human performance states.</p>
+</div>
+</div>
+<div class="text-center mt-12">
+<input id="whitepaperEmail" type="email" placeholder="Enter email to download whitepaper" class="px-6 py-4 rounded-xl bg-gray-900 border border-gray-700 text-white w-80">
+<button onclick="unlockWhitepaper()" class="ml-4 bg-white text-black px-8 py-4 rounded-xl font-semibold">Download</button>
+<div id="whitepaperLink" class="hidden mt-6">
+<a href="#" class="underline text-white">Download Whitepaper.pdf</a>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="py-16 text-center text-gray-500 border-t border-gray-800">
+© 2026 Human Potential Intelligence Platform
 </footer>
 
 <script>
+function toggleInvestorMode(){ alert('Investor Mode Activated'); }
 
-function toggleInvestorMode() {
-  alert("Investor mode enabled — showing market metrics.");
-}
-
-// Charts
-new Chart(document.getElementById('tamChart'), {
-  type: 'bar',
-  data: {
-    labels: ['Performance Tech','Corporate Wellness','Elite Sports'],
-    datasets: [{
-      label: 'TAM ($B)',
-      data: [45, 60, 25],
-      backgroundColor: '#ffffff'
-    }]
-  },
-  options: {
-    plugins: { legend: { labels: { color: '#fff' } } },
-    scales: {
-      x: { ticks: { color: '#fff' } },
-      y: { ticks: { color: '#fff' } }
-    }
-  }
+new Chart(document.getElementById('tamChart'),{
+type:'bar',
+data:{labels:['Performance Tech','Corporate Wellness','Elite Sports'],datasets:[{data:[45,60,25],backgroundColor:['#fff','#9ca3af','#6b7280']}]},
+options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#fff'}},y:{ticks:{color:'#fff'}}}}
 });
 
-new Chart(document.getElementById('revenueChart'), {
-  type: 'line',
-  data: {
-    labels: ['Year 1','Year 2','Year 3','Year 4','Year 5'],
-    datasets: [{
-      label: 'Projected ARR ($M)',
-      data: [1, 5, 18, 55, 140],
-      borderColor: '#ffffff'
-    }]
-  },
-  options: {
-    plugins: { legend: { labels: { color: '#fff' } } },
-    scales: {
-      x: { ticks: { color: '#fff' } },
-      y: { ticks: { color: '#fff' } }
-    }
-  }
+new Chart(document.getElementById('revenueChart'),{
+type:'line',
+data:{labels:['Y1','Y2','Y3','Y4','Y5'],datasets:[{data:[1,5,18,55,140],borderColor:'#fff',tension:0.4}]},
+options:{plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#fff'}},y:{ticks:{color:'#fff'}}}}
 });
 
-function runInference() {
-  const input = parseInt(document.getElementById('inferenceInput').value);
-  if (!input) return;
-
-  setTimeout(() => {
-    const risk = Math.min(95, Math.max(5, Math.round(input * 0.6 + Math.random() * 10)));
-    document.getElementById('inferenceOutput').innerText = risk;
-  }, 600);
+const slider=document.getElementById('inferenceInput');
+slider.oninput=function(){
+document.getElementById('fatigueValue').innerText=this.value;
+const risk=Math.round(this.value*0.65);
+document.getElementById('inferenceOutput').innerText=risk+'%';
 }
 
-function unlockWhitepaper() {
-  const email = document.getElementById('whitepaperEmail').value;
-  if (!email.includes('@')) {
-    alert('Enter valid email');
-    return;
-  }
-  document.getElementById('whitepaperLink').classList.remove('hidden');
+function unlockWhitepaper(){
+const email=document.getElementById('whitepaperEmail').value;
+if(!email.includes('@')){alert('Enter valid email');return;}
+document.getElementById('whitepaperLink').classList.remove('hidden');
 }
 
-function downloadInvestorDeck() {
-  const content = `Human Potential Intelligence Platform\n\nMarket Opportunity: $130B+\n5-Year ARR Projection: $140M\nHybrid Strategy: Pro-tier halo + Mass adoption\nAI Core: Multi-task transformer models\nInfrastructure: Kubernetes + Timescale + Kafka\n`;
-  const blob = new Blob([content], { type: 'application/pdf' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'Investor_Deck.pdf';
-  link.click();
+function downloadInvestorDeck(){
+const blob=new Blob(['Human Potential Intelligence Platform Investor Deck'],{type:'application/pdf'});
+const link=document.createElement('a');
+link.href=URL.createObjectURL(blob);
+link.download='Investor_Deck.pdf';
+link.click();
 }
-
 </script>
 
 </body>
